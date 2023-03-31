@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.13.1",
     "bootstrap": "^5.2.3",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
@@ -16,6 +17,7 @@
     "openai": "^3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-modal": "^3.16.1"
+    "react-modal": "^3.16.1",
+    "supabase": "^1.46.5"
   }
 }
