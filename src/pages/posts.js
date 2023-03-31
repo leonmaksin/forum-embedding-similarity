@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import Navbar from './navbar'
 import renderPost from './render_post'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,7 +48,7 @@ export default function Home() {
         <Navbar />
         <div className="flex-col" align="center">
           <h1 className="mb-4">Welcome to our forum! Here are some of our top posts</h1>
-          <a className="btn btn-outline-primary mb-4" href="/create-post">Create your own post :)</a>
+          <Link className="btn btn-outline-primary mb-4" href="/create-post">Create your own post :)</Link>
           { posts.map((post) => renderPost(post)) }
         </div>
       </main>

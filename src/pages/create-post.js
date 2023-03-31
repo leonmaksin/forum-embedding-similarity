@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import Navbar from './navbar'
 import renderPost from './render_post'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -220,13 +221,13 @@ export default function Home() {
                     return renderPost(post)
                 }) }
                 <div className="flex-row d-flex justify-content-around">
-                    <a className="btn btn-outline-primary" href="/posts">Thanks! Go to posts</a>
-                    <a className="btn btn-outline-primary"
+                    <Link className="btn btn-outline-primary" href="/posts">Thanks! Go to posts</Link>
+                    <Link className="btn btn-outline-primary"
                         onClick={() => {
                             setShowPopup(false);
                             setBlockPopup(true);
                         }}
-                    >Keep writing post</a>
+                    >Keep writing post</Link>
                 </div>
             </div>
         )

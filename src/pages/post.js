@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './navbar'
 import renderPost from './render_post'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,7 @@ export default function Home() {
             setContent(
                 <div>
                     <h1 className="mt-5">Error: No post specified</h1>
-                    <a href="/posts">Home</a>
+                    <Link href="/posts">Home</Link>
                 </div>
             )
         } else {
@@ -41,17 +42,26 @@ export default function Home() {
         throw response;
     }).then(function (data) {
         const { posts } = data;
-        setContent(
-            <div>
-                { posts.map((post) => renderPost(post)) }
-            </div>
-        );
+        if (posts.length == 0) {
+            setContent(
+                <div>
+                    <h1 className="mt-5">Error: Post not found</h1>
+                    <Link href="/posts">Home</Link>
+                </div>
+            );
+        } else {
+            setContent(
+                <div>
+                    { posts.map((post) => renderPost(post)) }
+                </div>
+            );
+        }
     }).catch(function (error) {
         console.warn("Error:",error)
         setContent(
             <div>
                 <h1 className="mt-5">Error: Post not found</h1>
-                <a href="/posts">Home</a>
+                <Link href="/posts">Home</Link>
             </div>
         );
     })
