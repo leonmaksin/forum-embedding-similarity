@@ -62,6 +62,7 @@ const evaluatePost = async (req, res) => {
         .from('posts')
         .select('*')
         .in('id', similarPosts)
+        .order('id', { ascending: false })
     console.log(`Fetching similar posts`)
 
     res.status(200).json({

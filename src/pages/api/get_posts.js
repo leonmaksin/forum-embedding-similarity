@@ -12,11 +12,13 @@ const getPosts = async (req, res) => {
             .from('posts')
             .select('*')
             .eq('id', req.query.id)
+            .order('id', { ascending: false })
         res.status(200).json({ posts: posts });
     } else {
         let { data: posts, error } = await supabase
             .from('posts')
             .select('*')
+            .order('id', { ascending: false })
         res.status(200).json({ posts: posts });
     }
 };
