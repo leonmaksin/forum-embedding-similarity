@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import Navbar from './navbar'
-import renderPost from './render_post'
+import renderPost from './render-post'
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -222,12 +222,12 @@ export default function Home() {
                 }) }
                 <div className="flex-row d-flex justify-content-around">
                     <Link className="btn btn-outline-primary" href="/posts">Thanks! Go to posts</Link>
-                    <Link className="btn btn-outline-primary"
+                    <button className="btn btn-outline-primary"
                         onClick={() => {
                             setShowPopup(false);
                             setBlockPopup(true);
                         }}
-                    >Keep writing post</Link>
+                    >Keep writing post</button>
                 </div>
             </div>
         )

@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import Navbar from './navbar'
-import renderPost from './render_post'
+import renderPost from './render-post'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
