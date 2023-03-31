@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react'
 import Navbar from './navbar'
 import renderPost from './render-post'
 import Link from 'next/link'
+import { redirect } from 'next/navigation';
+import Router from "next/router";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -51,8 +53,11 @@ export default function Home() {
         }
     }, [diffCount, recentlyEvaluated]);
 
-    const callEvalEndpoint = async (post, searchId, depth) => {
+    const callEvalEndpoint = async (post, depth) => {
         if (depth > 3) return;
+
+        const searchId = currentSearchId+1;
+        setCurrentSearchId(currentSearchId+1);
 
         await fetch('/api/evaluate_post', {
             method: 'POST',
@@ -78,7 +83,7 @@ export default function Home() {
         }).catch(function (error) {
             console.warn("Error:",error);
             console.log("Failed, trying again...");
-            callEvalEndpoint(post, searchId, depth+1);
+            callEvalEndpoint(post, depth+1);
         })
     }
 
@@ -96,8 +101,7 @@ export default function Home() {
             content: content
         };
 
-        setCurrentSearchId(currentSearchId+1);
-        callEvalEndpoint(post, currentSearchId, 0);
+        callEvalEndpoint(post, 0);
     }
 
     const createPost = async () => {
@@ -124,6 +128,7 @@ export default function Home() {
                 console.log("Post successfully created");
                 setCreating(false);
                 alert("Post succesfully created!");
+                Router.replace("/posts/");
                 return;
               }
               throw response;
