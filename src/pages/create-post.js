@@ -202,7 +202,7 @@ export default function Home() {
                         <textarea
                             rows="3"
                             value={content}
-                            placeholder="Please input your title and select a few tags first"
+                            placeholder={ titleTagsSet ? "What's on your mind?" : "Please input your title and select a few tags first" }
                             disabled={!titleTagsSet}
                             onChange={(event) => setContent(event.target.value)}
                         ></textarea>
