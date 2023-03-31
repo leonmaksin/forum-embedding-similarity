@@ -69,7 +69,6 @@ export default function Home() {
 
   useEffect(() => {
     if (postId) {
-        console.log("Post ID: ", postId)
         callGetSetPosts()
     }
   }, [postId]);
