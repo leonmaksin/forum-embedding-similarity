@@ -13,3 +13,8 @@ input, textarea, select {
 .w-60vw {
   width: 40vw;
 }
+
+.centered-custom {
+  position: fixed;
+  top: 40%;
+}

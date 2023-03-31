@@ -10,33 +10,6 @@ import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
-
-  const callGetSetPosts = async () => {
-    await fetch('/api/get_posts', {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json',
-      }
-    }).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        throw response;
-    }).then(function (data) {
-        const { posts } = data;
-        console.log(posts)
-        setPosts(posts);
-    }).catch(function (error) {
-        console.warn("Error:",error)
-        setPosts([]);
-    })
-  }
-
-  useEffect(() => {
-    callGetSetPosts()
-  }, []);
-
   return (
     <>
       <Head>
@@ -47,10 +20,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Navbar />
-        <div className="flex-col" align="center">
-          <h1 className="mb-4">Welcome to our forum! Here are some of our top posts</h1>
-          <Link className="btn btn-outline-primary mb-4" href="/create-post">Create your own post :)</Link>
-          { posts.map((post) => renderPost(post)) }
+        <div className="flex-col centered-custom" align="center">
+          <h1 className="mb-4">Welcome to our forum! <Link href="/posts">Check out some posts</Link> or <Link href="create-post">create your own</Link></h1>
         </div>
       </main>
     </>
