@@ -184,7 +184,7 @@ export default function Home() {
                             <option>Lifestyle</option>
                             <option>Cooking</option>
                             <option>Pets</option>
-                            <option>Minecraft</option>
+                            <option>Building</option>
                         </select>
                     </div>
                 </div>
