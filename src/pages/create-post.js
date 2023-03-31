@@ -27,6 +27,7 @@ export default function Home() {
     const [currentSearchId, setCurrentSearchId] = useState(0);
     const [latestSearch, setLatestSearch] = useState(0);
     const [diffCount, setDiffCount] = useState(10);
+    const [clickable, setClickable] = useState(false);
 
     const setWithDiff = (origValue, newValue, setfn) => {
         const diff = Math.abs(origValue.length - newValue.length)
@@ -78,6 +79,7 @@ export default function Home() {
                 setSimilarPosts(similarPosts);
                 if (!blockPopup && similarPosts.length > 0) {
                     setShowPopup(true);
+                    setTimeout(() => setClickable(true), 500);
                 }
             }
         }).catch(function (error) {
@@ -223,9 +225,9 @@ export default function Home() {
             <div className="card d-flex flex-col w-50 justify-content-center p-5" align="center">
                 <h4 className="mb-3">Hey! We think a similar post may already exist. Would you like to check these out before writing yours?</h4>
                 { similarPosts.map((post) => {
-                    return renderPost(post)
+                    return renderPost(post, clickable)
                 }) }
-                <div className="flex-row d-flex justify-content-around">
+                <div className={ "flex-row d-flex justify-content-around" }>
                     <Link className="btn btn-outline-primary" href="/posts">Thanks! Go to posts</Link>
                     <button className="btn btn-outline-primary"
                         onClick={() => {

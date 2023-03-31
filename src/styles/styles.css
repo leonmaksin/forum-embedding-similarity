@@ -18,3 +18,7 @@ input, textarea, select {
   position: fixed;
   top: 40%;
 }
+
+.unclickable {
+  pointer-events: none;
+}

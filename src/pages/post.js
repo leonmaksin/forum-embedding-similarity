@@ -52,7 +52,7 @@ export default function Home() {
         } else {
             setContent(
                 <div>
-                    { posts.map((post) => renderPost(post)) }
+                    { posts.map((post) => renderPost(post, false)) }
                 </div>
             );
         }
